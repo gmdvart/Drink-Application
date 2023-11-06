@@ -3,4 +3,6 @@
     <dimen name="home_banner_height">192dp</dimen>
     <dimen name="item_list_text_height">36dp</dimen>
     <dimen name="item_list_image_height">144dp</dimen>
+    <dimen name="shape_corner_radius">30dp</dimen>
+    <dimen name="details_sheet_image_height">360dp</dimen>
 </resources>

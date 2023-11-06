@@ -3,4 +3,10 @@
     <string name="home_title">Home</string>
     <string name="home_flavors">Flavors</string>
     <string name="favorite_added">This drink was added to favorites</string>
+
+    <string name="details_description">Description</string>
+    <string name="details_first_brewed">First brewed</string>
+    <string name="details_brewed_tips">Brewed tips</string>
+    <string name="details_food_pairing">Food Pairing</string>
+    <string name="details_contributed_by">Contributed by Sam Mason samjbmason</string>
 </resources>
