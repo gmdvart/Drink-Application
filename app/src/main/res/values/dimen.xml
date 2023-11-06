@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="home_banner_height">192dp</dimen>
+    <dimen name="item_list_text_height">36dp</dimen>
+    <dimen name="item_list_image_height">144dp</dimen>
+</resources>

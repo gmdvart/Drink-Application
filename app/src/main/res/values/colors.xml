@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+<!--    COLOR PALETTE-->
+    <color name="onSurface">#1F1F1F</color>
+    <color name="secondary">#2D2D2D</color>
+    <color name="brand">#F1CF6C</color>
+    <color name="onBackground">#888888</color>
+    <color name="background">#F1F1F1</color>
+    <color name="surface">#F9F9F9</color>
+    <color name="favorite">#E41818</color>
+    <color name="error">#BF0707</color>
+</resources>
