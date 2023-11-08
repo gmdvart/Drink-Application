@@ -12,31 +12,31 @@ class SingleDrinkRepositoryImpl(
 
     override suspend fun getRandomDrink(): Resource<DrinkDto?> {
         return try {
-            val randomDrink = service.getRandomDrink()
+            val randomDrink = service.getRandomDrink().first()
             Resource.Success(data = randomDrink)
         } catch (e: RedirectResponseException) {
-            Resource.Error(message = e.response.status.description)
+            return Resource.Error(e.response.status.description)
         } catch (e: ClientRequestException) {
-            Resource.Error(message = e.response.status.description)
+            return Resource.Error(e.response.status.description)
         } catch (e: ServerResponseException) {
-            Resource.Error(message = e.response.status.description)
+            return Resource.Error(e.response.status.description)
         } catch (e: Exception) {
-            Resource.Error(message = e.message)
+            return Resource.Error(e.message)
         }
     }
 
     override suspend fun getSingleDrink(drinkId: Int): Resource<DrinkDto?> {
         return try {
-            val randomDrink = service.getSingleDrink(drinkId)
+            val randomDrink = service.getSingleDrink(drinkId).first()
             Resource.Success(data = randomDrink)
         } catch (e: RedirectResponseException) {
-            Resource.Error(message = e.response.status.description)
+            return Resource.Error(e.response.status.description)
         } catch (e: ClientRequestException) {
-            Resource.Error(message = e.response.status.description)
+            return Resource.Error(e.response.status.description)
         } catch (e: ServerResponseException) {
-            Resource.Error(message = e.response.status.description)
+            return Resource.Error(e.response.status.description)
         } catch (e: Exception) {
-            Resource.Error(message = e.message)
+            return Resource.Error(e.message)
         }
     }
 }

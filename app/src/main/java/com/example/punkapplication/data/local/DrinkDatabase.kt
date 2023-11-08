@@ -4,15 +4,19 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.example.punkapplication.data.local.converters.StringArrayConverter
 import com.example.punkapplication.data.local.dao.DrinkDao
 import com.example.punkapplication.data.local.dao.DrinkFavoriteDao
 import com.example.punkapplication.data.local.dao.DrinkHistoryDao
 import com.example.punkapplication.data.local.dao.RemoteKeysDao
 
 @Database(
-    entities = [DrinkEntity::class, RemoteKeysDao::class, DrinkFavoriteEntity::class, DrinkHistoryEntity::class],
-    version = 1
+    entities = [DrinkEntity::class, RemoteKeys::class, DrinkFavoriteEntity::class, DrinkHistoryEntity::class],
+    version = 1,
+    exportSchema = false
 )
+@TypeConverters(StringArrayConverter::class)
 abstract class DrinkDatabase : RoomDatabase() {
     abstract val drinkDao: DrinkDao
     abstract val remoteKeysDao: RemoteKeysDao

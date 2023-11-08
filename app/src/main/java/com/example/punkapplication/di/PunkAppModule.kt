@@ -48,8 +48,8 @@ class PunkAppModule(
                     level = LogLevel.ALL
                 }
                 install(ContentNegotiation) {
-                    val configuredJson = Json { ignoreUnknownKeys = true }
-                    json(configuredJson)
+                    val jsonConfig = Json { ignoreUnknownKeys = true }
+                    json(jsonConfig)
                 }
             }
         )

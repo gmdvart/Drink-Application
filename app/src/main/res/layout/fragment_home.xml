@@ -21,11 +21,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/home_banner_height">
 
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/bannerProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:indeterminate="true"
+                    android:visibility="gone"/>
+
             <LinearLayout
+                    android:id="@+id/bannerInfoLinearLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:weightSum="5">
+                    android:weightSum="5"
+                    android:visibility="gone">
 
                 <ImageView
                         android:id="@+id/bannerImageView"
@@ -45,21 +55,38 @@
                         style="@style/TextAppearance.AppCompat.Headline"
                         tools:text="A Real Bitter Experience."/>
             </LinearLayout>
+
+            <TextView
+                    android:id="@+id/bannerErrorTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:textColor="?attr/colorError"
+                    android:visibility="gone"/>
         </com.google.android.material.card.MaterialCardView>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/home_flavors"
                 style="@style/TextAppearance.AppCompat.Headline"/>
-    </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-            tools:listitem="@layout/list_item"
-            tools:itemCount="10"/>
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                tools:listitem="@layout/list_item"
+                tools:itemCount="10"/>
+    </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

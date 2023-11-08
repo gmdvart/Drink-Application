@@ -11,7 +11,7 @@ plugins {
 
 android {
     namespace = "com.example.punkapplication"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.punkapplication"
@@ -45,7 +45,13 @@ dependencies {
     implementation(libs.bundles.kotlin)
     implementation(libs.bundles.androidx)
     implementation(libs.android.material)
-    implementation(libs.room)
+    // Room
+    val room_version = "2.6.0"
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+    ksp("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+
     implementation(libs.bundles.ktorclient)
     implementation(libs.bundles.pagigng)
     implementation(libs.coil)

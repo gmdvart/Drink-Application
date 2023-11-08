@@ -6,7 +6,7 @@ interface DrinkService {
 
     suspend fun getDrinks(pageIndex: Int, pageSize: Int): List<DrinkDto>
 
-    suspend fun getRandomDrink(): DrinkDto?
+    suspend fun getRandomDrink(): List<DrinkDto>
 
-    suspend fun getSingleDrink(drinkId: Int): DrinkDto?
+    suspend fun getSingleDrink(drinkId: Int): List<DrinkDto>
 }

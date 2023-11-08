@@ -1,10 +1,14 @@
 package com.example.punkapplication.representation.home
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
+import com.example.punkapplication.PunkApplication
 import com.example.punkapplication.domain.home_use_case.HomeUseCases
 import com.example.punkapplication.domain.model.DrinkModel
 import com.example.punkapplication.utils.Resource
@@ -16,7 +20,7 @@ class HomeViewModel (
     private val homeUseCases: HomeUseCases
 ) : ViewModel() {
 
-    private val _homeBannerUiState: MutableStateFlow<HomeBannerUiState> = MutableStateFlow(HomeBannerUiState())
+    private val _homeBannerUiState: MutableStateFlow<HomeBannerUiState> = MutableStateFlow(HomeBannerUiState(isLoading = true))
     val homeBannerUiState: StateFlow<HomeBannerUiState>
         get() = _homeBannerUiState.asStateFlow()
 
@@ -35,15 +39,34 @@ class HomeViewModel (
                 is Resource.Loading -> {
                     _homeBannerUiState.value = HomeBannerUiState(isLoading = true)
                 }
-
                 is Resource.Success -> {
+                    Log.d("Home", result.data.toString())
                     _homeBannerUiState.value = HomeBannerUiState(data = result.data?.toDrinkModel())
                 }
-
                 is Resource.Error -> {
                     _homeBannerUiState.value = HomeBannerUiState(errorMessage = result.message ?: "An unexpected error occurred")
                 }
             }
         }.launchIn(viewModelScope)
+    }
+
+    companion object {
+        @Suppress("UNCHECKED_CAST")
+        fun provideFactory(): ViewModelProvider.Factory {
+            return object : ViewModelProvider.Factory {
+                override fun <T : ViewModel> create(
+                    modelClass: Class<T>,
+                    extras: CreationExtras
+                ): T {
+                    if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
+                        val application = extras[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as PunkApplication
+                        val useCases = application.module.provideHomeUseCases()
+                        return HomeViewModel(useCases) as T
+                    } else {
+                        throw IllegalArgumentException("Unknown ViewModel class")
+                    }
+                }
+            }
+        }
     }
 }
