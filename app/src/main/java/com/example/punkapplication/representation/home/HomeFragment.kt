@@ -4,17 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
+import androidx.paging.LoadState
+import androidx.recyclerview.widget.GridLayoutManager
 import coil.load
 import com.example.punkapplication.databinding.FragmentHomeBinding
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
+import com.example.punkapplication.representation.details.DetailsFragment
+import com.example.punkapplication.representation.details.DetailsViewModel
+import com.example.punkapplication.representation.ui.DrinkListPagingDataAdapter
+import com.example.punkapplication.representation.utils.collectLatestFlow
 
 class HomeFragment : Fragment() {
 
@@ -32,6 +33,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.setUpBannerState()
+        binding.setUpDrinkListState()
     }
 
     private fun FragmentHomeBinding.setUpBannerState() {
@@ -48,15 +50,33 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun <T> Fragment.collectLatestFlow(
-        flow: Flow<T>,
-        block: suspend (T) -> Unit
-    ) {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                flow.collectLatest {
-                    block(it)
-                }
+    private fun FragmentHomeBinding.setUpDrinkListState() {
+        val pagingDataAdapter = DrinkListPagingDataAdapter { drinkId -> showDrinkDetails(drinkId) }
+        recyclerView.adapter = pagingDataAdapter
+        recyclerView.layoutManager = GridLayoutManager(context, 2)
+
+        collectLatestFlow(viewModel.drinkListPagingData) {
+            pagingDataAdapter.submitData(it)
+        }
+
+        collectLatestFlow(pagingDataAdapter.loadStateFlow) { loadState ->
+            drinkListProgressBar.isVisible = loadState.refresh is LoadState.Loading
+            recyclerView.isVisible = loadState.refresh !is LoadState.Loading
+
+            if (loadState.refresh is LoadState.Error) {
+                val errorMessage = (loadState.refresh as LoadState.Error).error.message
+                Toast.makeText(context, "Error: $errorMessage", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun showDrinkDetails(drinkId: Int) {
+        activity?.supportFragmentManager?.let { fragmentManager ->
+            val bundle = Bundle()
+            bundle.putInt(DetailsViewModel.PARAM_DRINK_ID, drinkId)
+            DetailsFragment().apply {
+                arguments = bundle
+                show(fragmentManager, DetailsFragment::class.toString())
             }
         }
     }

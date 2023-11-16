@@ -40,7 +40,6 @@ class HomeViewModel (
                     _homeBannerUiState.value = HomeBannerUiState(isLoading = true)
                 }
                 is Resource.Success -> {
-                    Log.d("Home", result.data.toString())
                     _homeBannerUiState.value = HomeBannerUiState(data = result.data?.toDrinkModel())
                 }
                 is Resource.Error -> {

@@ -9,4 +9,34 @@
     <string name="details_brewed_tips">Brewed tips</string>
     <string name="details_food_pairing">Food Pairing</string>
     <string name="details_contributed_by">Contributed by Sam Mason samjbmason</string>
+    <string name="details_add_to_favorite">Add to favorite</string>
+
+    <string name="lorem_ipsum">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
+        egestas. In elit libero, aliquet ut nibh sit amet, consequat tristique massa. Vestibulum rhoncus eget odio et
+        pharetra. Pellentesque non facilisis dolor. Fusce blandit lacus dui, ac laoreet nisi lobortis nec. Pellentesque
+        a finibus erat, nec eleifend urna. Phasellus nec venenatis turpis, id malesuada metus. Pellentesque habitant
+        morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis blandit mauris quis arcu venenatis
+        scelerisque. Donec vel laoreet justo, quis venenatis nulla. Sed et est pretium, accumsan augue a, laoreet est.
+        Curabitur et nisi a arcu blandit dapibus. In ligula metus, volutpat a cursus et, commodo et purus. Nulla et ex
+        dictum elit sagittis elementum. Sed mattis arcu est, at suscipit leo fringilla nec.
+
+        Sed porttitor commodo dui, in ornare diam ullamcorper id. Suspendisse faucibus metus et tellus dapibus
+        efficitur. Aenean est justo, tincidunt id ex eu, commodo congue ipsum. Nunc nec porttitor lacus, sit amet
+        tincidunt turpis. Sed fringilla blandit felis sed fringilla. Nunc pretium lorem ut velit euismod malesuada. In
+        ac diam fringilla, sollicitudin leo vel, elementum mi.
+
+        Ut bibendum tincidunt velit et pellentesque. Morbi luctus in orci at tempor. Maecenas eget interdum justo, ac
+        blandit ipsum. Fusce a tellus nec elit tempus rutrum et sit amet dui. Phasellus sagittis, risus et sollicitudin
+        varius, nulla augue ullamcorper eros, ut porttitor turpis eros id tortor. Morbi eros turpis, accumsan eget
+        dapibus id, bibendum vitae tellus. Nam vestibulum elit nibh, eget molestie mauris tincidunt vel. Curabitur in
+        molestie leo, sed porta libero. Orci varius natoque penatibus et magnis dis parturient montes, nascetur
+        ridiculus mus. Cras vitae sapien metus.
+
+        Phasellus auctor metus ac magna dictum convallis. Nunc tellus augue, pretium sed velit sit amet, semper
+        hendrerit turpis. Mauris viverra nibh in volutpat eleifend. In hac habitasse platea dictumst. Phasellus vitae
+        nisl non sem luctus aliquet. Mauris viverra, nibh ut mattis interdum, nisi sapien vestibulum enim, sed euismod
+        sem nisi eget risus. Aenean condimentum velit dolor, sed aliquam mauris tincidunt id. Sed elit augue, consequat
+        a mollis et, sollicitudin quis tellus. Integer dui nulla, luctus condimentum bibendum vel, malesuada at libero.
+        Aliquam ipsum orci, bibendum quis placerat et, volutpat quis est. Aenean egestas molestie ipsum a euismod.
+    </string>
 </resources>

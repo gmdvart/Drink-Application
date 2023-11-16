@@ -1,27 +1,31 @@
 package com.example.punkapplication.representation.details
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.punkapplication.utils.Resource
+import androidx.lifecycle.viewmodel.CreationExtras
+import com.example.punkapplication.PunkApplication
 import com.example.punkapplication.data.mappers.toDrinkModel
 import com.example.punkapplication.domain.details_use_case.DetailsUseCases
+import com.example.punkapplication.utils.Resource
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-private const val PARAM_DRINK_ID = "drinkId"
-
 class DetailsViewModel(
     private val detailsUseCases: DetailsUseCases,
-    savedStateHandle: SavedStateHandle
+    drinkId: Int? = null
 ) : ViewModel() {
 
-    private val _drinkDetailsUiState: MutableStateFlow<DrinkDetailsUiState> = MutableStateFlow(DrinkDetailsUiState())
+    private val _drinkDetailsUiState: MutableStateFlow<DrinkDetailsUiState> =
+        MutableStateFlow(DrinkDetailsUiState(isLoading = true))
     val drinkDetailsUiState: StateFlow<DrinkDetailsUiState>
         get() = _drinkDetailsUiState.asStateFlow()
 
+    private var addOrRemoveFromFavoriteJob: Job? = null
+
     init {
-        savedStateHandle.get<Int>(PARAM_DRINK_ID)?.let { getDrinkDetails(it) }
+        drinkId?.let { getDrinkDetails(it) }
     }
 
     private fun getDrinkDetails(drinkId: Int) {
@@ -42,7 +46,32 @@ class DetailsViewModel(
                     _drinkDetailsUiState.value = DrinkDetailsUiState(errorMessage = resource.message ?: "An unexpected error occurred")
                 }
             }
+            if (resource !is Resource.Error) checkIsDrinkInFavorites(drinkId)
         }.launchIn(viewModelScope)
+    }
+
+    private suspend fun checkIsDrinkInFavorites(drinkId: Int) {
+        val isMarkedAsFavorite = detailsUseCases.getDrinkFromFavoritesUseCase(drinkId) != null
+        _drinkDetailsUiState.value = _drinkDetailsUiState.value.copy(isMarkedAsFavorite = isMarkedAsFavorite)
+    }
+
+    fun onDetailsEvent(event: DetailsEvent) {
+        val isRemoveOrAddInProcess = addOrRemoveFromFavoriteJob?.isActive ?: false
+        if (isRemoveOrAddInProcess) return
+
+        val drink = _drinkDetailsUiState.value.drinkModel
+
+        addOrRemoveFromFavoriteJob = viewModelScope.launch {
+            when (event) {
+                is DetailsEvent.Add -> {
+                    drink?.let { detailsUseCases.addDrinkToFavoritesUseCase(it) }
+                }
+                is DetailsEvent.Remove -> {
+                    drink?.let { detailsUseCases.removeDrinkFromFavoritesUseCase(it) }
+                }
+            }
+            drink?.id?.let { checkIsDrinkInFavorites(it) }
+        }
     }
 
     private fun addDrinkToHistory() {
@@ -53,17 +82,25 @@ class DetailsViewModel(
         }
     }
 
-    fun onDetailsEvent(event: DetailsEvent) {
-        val drink = _drinkDetailsUiState.value.drinkModel
-        when (event) {
-            is DetailsEvent.Add -> {
-                viewModelScope.launch {
-                    drink?.let { detailsUseCases.addDrinkToFavoritesUseCase(it) }
-                }
-            }
-            is DetailsEvent.Remove -> {
-                viewModelScope.launch{
-                    drink?.let { detailsUseCases.removeDrinkFromFavoritesUseCase(it) }
+    companion object {
+        const val PARAM_DRINK_ID = "drinkId"
+
+        @Suppress("UNCHECKED_CAST")
+        fun provideFactory(drinkId: Int?): ViewModelProvider.Factory {
+            return object : ViewModelProvider.Factory {
+                override fun <T : ViewModel> create(
+                    modelClass: Class<T>,
+                    extras: CreationExtras
+                )
+                        : T {
+                    if (modelClass.isAssignableFrom(DetailsViewModel::class.java)) {
+                        val application =
+                            extras[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as PunkApplication
+                        val useCases = application.module.provideDetailsUseCases()
+                        return DetailsViewModel(useCases, drinkId) as T
+                    } else {
+                        throw IllegalArgumentException("Unknown ViewModel class")
+                    }
                 }
             }
         }

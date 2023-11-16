@@ -13,7 +13,7 @@ fun DrinkDto.toEntity(): DrinkEntity {
         tagline,
         firstBrewed,
         description,
-        imageUrl,
+        imageUrl ?: "",
         foodPairing,
         brewersTips,
         contributedBy
@@ -27,7 +27,7 @@ fun DrinkDto.toDrinkModel(): DrinkModel {
         tagline,
         firstBrewed,
         description,
-        imageUrl,
+        imageUrl ?: "",
         foodPairing,
         brewersTips,
         contributedBy

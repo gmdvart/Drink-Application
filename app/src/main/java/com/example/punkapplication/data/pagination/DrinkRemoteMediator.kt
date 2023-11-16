@@ -8,11 +8,9 @@ import androidx.room.withTransaction
 import com.example.punkapplication.data.local.DrinkDatabase
 import com.example.punkapplication.data.local.DrinkEntity
 import com.example.punkapplication.data.local.RemoteKeys
-import com.example.punkapplication.domain.repository.DrinkService
 import com.example.punkapplication.data.mappers.toEntity
+import com.example.punkapplication.domain.repository.DrinkService
 import io.ktor.client.plugins.*
-
-private const val START_PAGE_INDEX = 1
 
 @OptIn(ExperimentalPagingApi::class)
 class DrinkRemoteMediator(
@@ -23,7 +21,8 @@ class DrinkRemoteMediator(
         val page = when (loadType) {
             LoadType.REFRESH -> {
                 val remoteKeys = getRemoteKeysForCurrentPosition(state)
-                remoteKeys?.nextKey?.minus(1) ?: START_PAGE_INDEX
+                remoteKeys?.nextKey?.minus(1) ?: DrinkService.PAGE_START_INDEX
+                DrinkService.PAGE_START_INDEX
             }
 
             LoadType.PREPEND -> {
@@ -40,6 +39,7 @@ class DrinkRemoteMediator(
                 nextKey
             }
         }
+
         try {
             val drinks = service.getDrinks(pageIndex = page, pageSize = state.config.pageSize)
             val endOfPaginationReached = drinks.isEmpty()
@@ -49,11 +49,12 @@ class DrinkRemoteMediator(
                     database.remoteKeysDao.clearKeys()
                 }
 
-                val prevKey = if (page == START_PAGE_INDEX) null else page - 1
+                val prevKey = if (page == DrinkService.PAGE_START_INDEX) null else page - 1
                 val nextKey = if (endOfPaginationReached) null else page + 1
 
                 val keys = drinks.map { drink -> RemoteKeys(drink.id, prevKey, nextKey) }
                 val drinksEntities = drinks.map { it.toEntity() }
+
                 database.remoteKeysDao.insertKeys(keys)
                 database.drinkDao.insertDrinks(drinksEntities)
             }
@@ -70,17 +71,13 @@ class DrinkRemoteMediator(
     }
 
     private suspend fun getRemoteKeysForLastItem(state: PagingState<Int, DrinkEntity>): RemoteKeys? {
-        return state.pages.lastOrNull { page ->
-            page.data.isNotEmpty()
-        }?.data?.lastOrNull()?.let { drink ->
+        return state.pages.lastOrNull { page -> page.data.isNotEmpty() }?.data?.lastOrNull()?.let { drink ->
             database.remoteKeysDao.getKey(drink.id)
         }
     }
 
     private suspend fun getRemoteKeysForFirstItem(state: PagingState<Int, DrinkEntity>): RemoteKeys? {
-        return state.pages.firstOrNull { page ->
-            page.data.isNotEmpty()
-        }?.data?.firstOrNull()?.let { drink ->
+        return state.pages.firstOrNull { page -> page.data.isNotEmpty() }?.data?.firstOrNull()?.let { drink ->
             database.remoteKeysDao.getKey(drink.id)
         }
     }

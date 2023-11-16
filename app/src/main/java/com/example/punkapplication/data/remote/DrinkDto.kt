@@ -10,7 +10,7 @@ data class DrinkDto(
     @SerialName("tagline") val tagline: String,
     @SerialName("first_brewed") val firstBrewed: String,
     @SerialName("description") val description: String,
-    @SerialName("image_url") val imageUrl: String,
+    @SerialName("image_url") val imageUrl: String?,
     @SerialName("food_pairing") val foodPairing: List<String>,
     @SerialName("brewers_tips") val brewersTips: String,
     @SerialName("contributed_by") val contributedBy: String

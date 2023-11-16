@@ -45,7 +45,8 @@ class PunkAppModule(
         return DrinkHttpServiceImpl(
             client = HttpClient(Android) {
                 install(Logging) {
-                    level = LogLevel.ALL
+                    logger = Logger.DEFAULT
+                    level = LogLevel.INFO
                 }
                 install(ContentNegotiation) {
                     val jsonConfig = Json { ignoreUnknownKeys = true }

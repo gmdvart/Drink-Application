@@ -11,7 +11,6 @@ import com.example.punkapplication.domain.repository.DrinkListRepository
 import com.example.punkapplication.domain.repository.DrinkService
 import kotlinx.coroutines.flow.Flow
 
-private const val PAGE_SIZE = 25
 
 class DrinkListRepositoryImpl(
     private val service: DrinkService,
@@ -23,7 +22,7 @@ class DrinkListRepositoryImpl(
         val pagingSourceFactory = { database.drinkDao.getDrinks() }
         return Pager(
             config = PagingConfig(
-                pageSize = PAGE_SIZE,
+                pageSize = DrinkService.PAGE_SIZE,
                 enablePlaceholders = false
             ),
             pagingSourceFactory = pagingSourceFactory,

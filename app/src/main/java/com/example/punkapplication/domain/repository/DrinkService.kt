@@ -9,4 +9,9 @@ interface DrinkService {
     suspend fun getRandomDrink(): List<DrinkDto>
 
     suspend fun getSingleDrink(drinkId: Int): List<DrinkDto>
+
+    companion object {
+        const val PAGE_SIZE = 20
+        const val PAGE_START_INDEX = 1
+    }
 }
