@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.punkapplication.R
 import com.example.punkapplication.databinding.ActivityMainBinding
+import com.example.punkapplication.representation.favorites.FavoritesFragment
 import com.example.punkapplication.representation.home.HomeFragment
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.nav_host_fragment, HomeFragment())
+            .replace(R.id.nav_host_fragment, FavoritesFragment())
             .commit()
     }
 }

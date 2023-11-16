@@ -6,4 +6,7 @@
     <dimen name="shape_corner_radius">30dp</dimen>
     <dimen name="details_image_height">360dp</dimen>
     <dimen name="details_fab_margin">16dp</dimen>
+    <dimen name="favorites_counter_inner_padding">16dp</dimen>
+    <dimen name="favorites_counter_shape_size">84dp</dimen>
+    <dimen name="favorites_counter_max_text_size">32dp</dimen>
 </resources>
