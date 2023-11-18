@@ -9,4 +9,5 @@
     <dimen name="favorites_counter_inner_padding">16dp</dimen>
     <dimen name="favorites_counter_shape_size">84dp</dimen>
     <dimen name="favorites_counter_max_text_size">32dp</dimen>
+    <dimen name="history_item_height">82dp</dimen>
 </resources>

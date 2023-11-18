@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.example.punkapplication.R
 import com.example.punkapplication.databinding.ActivityMainBinding
 import com.example.punkapplication.representation.favorites.FavoritesFragment
+import com.example.punkapplication.representation.history.HistoryFragment
 import com.example.punkapplication.representation.home.HomeFragment
 
 class MainActivity : AppCompatActivity() {
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.nav_host_fragment, FavoritesFragment())
+            .replace(R.id.nav_host_fragment, HistoryFragment())
             .commit()
     }
 }
