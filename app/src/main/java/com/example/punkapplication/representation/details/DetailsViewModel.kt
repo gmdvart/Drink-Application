@@ -36,11 +36,8 @@ class DetailsViewModel(
                 }
                 is Resource.Success -> {
                     val drink = resource.data
-                    val isMarkedAsFavorite = detailsUseCases.getDrinkFromFavoritesUseCase(drinkId) == null
-                    _drinkDetailsUiState.value = DrinkDetailsUiState(
-                        drinkModel = drink?.toDrinkModel(),
-                        isMarkedAsFavorite = isMarkedAsFavorite
-                    )
+                    _drinkDetailsUiState.value = DrinkDetailsUiState(drinkModel = drink?.toDrinkModel())
+                    addDrinkToHistory()
                 }
                 is Resource.Error -> {
                     _drinkDetailsUiState.value = DrinkDetailsUiState(errorMessage = resource.message ?: "An unexpected error occurred")
@@ -74,12 +71,10 @@ class DetailsViewModel(
         }
     }
 
-    private fun addDrinkToHistory() {
+    private suspend fun addDrinkToHistory() {
         val drink = _drinkDetailsUiState.value.drinkModel
-        viewModelScope.launch {
-            val time = System.currentTimeMillis()
-            drink?.let { detailsUseCases.addDrinkToHistoryUseCase(drink, time) }
-        }
+        val time = System.currentTimeMillis()
+        drink?.let { detailsUseCases.addDrinkToHistoryUseCase(drink, time) }
     }
 
     companion object {
