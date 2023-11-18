@@ -27,10 +27,10 @@ class DetailsFragment : BottomSheetDialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.setUiState()
+        binding.setUpState()
     }
 
-    private fun FragmentDetailsBinding.setUiState() {
+    private fun FragmentDetailsBinding.setUpState() {
         val favoriteFab = getAndInitFavoriteFab()
 
         collectLatestFlow(viewModel.drinkDetailsUiState) { uiState ->
