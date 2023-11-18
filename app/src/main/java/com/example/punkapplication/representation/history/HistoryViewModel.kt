@@ -14,23 +14,23 @@ class HistoryViewModel (
     private val historyUseCases: HistoryUseCases
 ) : ViewModel() {
 
-    private val _drinkHistoryUiState: MutableStateFlow<DrinkHistoryUiState> = MutableStateFlow(DrinkHistoryUiState.Loading)
-    val drinkHistoryUiState: StateFlow<DrinkHistoryUiState>
-        get() = _drinkHistoryUiState.asStateFlow()
+    private val _historyUiState: MutableStateFlow<HistoryUiState> = MutableStateFlow(HistoryUiState.Loading)
+    val historyUiState: StateFlow<HistoryUiState>
+        get() = _historyUiState.asStateFlow()
 
     init {
         getDrinks()
     }
 
 
-    fun onEvent(event: DrinkHistoryEvent) {
+    fun onEvent(event: HistoryEvent) {
         when (event) {
-            is DrinkHistoryEvent.RemoveDrink -> {
+            is HistoryEvent.Remove -> {
                 viewModelScope.launch {
                     historyUseCases.removeDrinkFromHistoryUseCase(event.drink)
                 }
             }
-            is DrinkHistoryEvent.ClearHistory -> {
+            is HistoryEvent.ClearHistory -> {
                 viewModelScope.launch {
                     historyUseCases.clearDrinkHistoryUseCase()
                 }
@@ -40,10 +40,10 @@ class HistoryViewModel (
 
     private fun getDrinks() {
         viewModelScope.launch {
-            _drinkHistoryUiState.value = DrinkHistoryUiState.Loading
+            _historyUiState.value = HistoryUiState.Loading
             historyUseCases.getDrinkHistoryListUseCase().collectLatest { drinkList ->
                 val drinks = drinkList.map { it.toDrinkModel() }
-                _drinkHistoryUiState.value = DrinkHistoryUiState.Loaded(drinks)
+                _historyUiState.value = HistoryUiState.Loaded(drinks)
             }
         }
     }
