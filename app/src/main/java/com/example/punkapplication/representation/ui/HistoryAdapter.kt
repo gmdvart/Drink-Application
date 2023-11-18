@@ -11,7 +11,8 @@ import com.example.punkapplication.domain.model.DrinkModel
 class HistoryAdapter: ListAdapter<DrinkModel, HistoryAdapter.HistoryItemViewHolder>(AdapterComponents.drinkModelDiffCallback) {
     inner class HistoryItemViewHolder(private val binding: HistoryListItemBinding): RecyclerView.ViewHolder(binding.root) {
         private lateinit var _drinkModel: DrinkModel
-        val drinkModel = _drinkModel
+        val drinkModel
+            get() = _drinkModel
 
         fun bind(drinkModel: DrinkModel) {
             _drinkModel = drinkModel

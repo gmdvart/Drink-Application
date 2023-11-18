@@ -32,12 +32,12 @@ class HistoryFragment : Fragment() {
         setUpToolBar()
 
         val adapter = HistoryAdapter()
-        setUpRecyclerViewWithSwipeToRemove(adapter) { viewModel.onEvent(DrinkHistoryEvent.RemoveDrink(it)) }
+        setUpRecyclerViewWithSwipeToRemove(requireContext() ,adapter) { viewModel.onEvent(HistoryEvent.Remove(it)) }
 
-        collectLatestFlow(viewModel.drinkHistoryUiState) { uiState ->
-            progressBar.isVisible = uiState is DrinkHistoryUiState.Loading
+        collectLatestFlow(viewModel.historyUiState) { uiState ->
+            progressBar.isVisible = uiState is HistoryUiState.Loading
 
-            if (uiState is DrinkHistoryUiState.Loaded) {
+            if (uiState is HistoryUiState.Loaded) {
                 emptyHistoryTextView.isVisible = uiState.drinks.isEmpty()
                 adapter.submitList(uiState.drinks)
             }
@@ -47,7 +47,7 @@ class HistoryFragment : Fragment() {
     private fun FragmentHistoryBinding.setUpToolBar() {
         toolBar.setOnMenuItemClickListener {
             if (it.itemId == R.id.clearHistoryItem) {
-                viewModel.onEvent(DrinkHistoryEvent.ClearHistory)
+                viewModel.onEvent(HistoryEvent.ClearHistory)
                 true
             } else
                 false
