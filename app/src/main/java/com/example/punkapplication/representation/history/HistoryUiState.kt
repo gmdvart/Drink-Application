@@ -4,5 +4,8 @@ import com.example.punkapplication.domain.model.DrinkModel
 
 sealed class HistoryUiState {
     data object Loading: HistoryUiState()
-    data class Loaded(val drinks: List<DrinkModel>): HistoryUiState()
+    data class Loaded(
+        val drinks: List<DrinkModel> = listOf(),
+        val isTopBarExpanded: Boolean = true
+    ): HistoryUiState()
 }

@@ -38,6 +38,7 @@ class HistoryFragment : Fragment() {
             progressBar.isVisible = uiState is HistoryUiState.Loading
 
             if (uiState is HistoryUiState.Loaded) {
+                appBarLayout.setExpanded(uiState.isTopBarExpanded)
                 emptyHistoryTextView.isVisible = uiState.drinks.isEmpty()
                 adapter.submitList(uiState.drinks)
             }
@@ -52,5 +53,11 @@ class HistoryFragment : Fragment() {
             } else
                 false
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        val isTopAppBarExpanded = !binding.appBarLayout.isLifted
+        viewModel.saveTopAppBarState(isTopAppBarExpanded)
     }
 }

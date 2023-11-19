@@ -48,6 +48,13 @@ class HistoryViewModel (
         }
     }
 
+    fun saveTopAppBarState(isTopAppBarExpanded: Boolean) {
+        val stateLoaded = _historyUiState.value as? HistoryUiState.Loaded
+        stateLoaded?.let { loaded ->
+            _historyUiState.update { loaded.copy(isTopBarExpanded = isTopAppBarExpanded) }
+        }
+    }
+
     companion object {
 
         @Suppress("UNCHECKED_CAST")
