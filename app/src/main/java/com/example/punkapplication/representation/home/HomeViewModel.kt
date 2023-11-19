@@ -1,6 +1,5 @@
 package com.example.punkapplication.representation.home
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -14,7 +13,6 @@ import com.example.punkapplication.domain.model.DrinkModel
 import com.example.punkapplication.utils.Resource
 import com.example.punkapplication.data.mappers.toDrinkModel
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 
 class HomeViewModel (
     private val homeUseCases: HomeUseCases
@@ -47,6 +45,12 @@ class HomeViewModel (
                 }
             }
         }.launchIn(viewModelScope)
+    }
+
+    fun saveTopBarState(isTopBarExpanded: Boolean) {
+        _homeBannerUiState.update {
+            _homeBannerUiState.value.copy(isTopBarExpanded = isTopBarExpanded)
+        }
     }
 
     companion object {

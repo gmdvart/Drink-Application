@@ -32,14 +32,19 @@ class HomeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.setUpBannerState()
-        binding.setUpDrinkListState()
+        binding.setUpState()
+    }
+
+    private fun FragmentHomeBinding.setUpState() {
+        setUpBannerState()
+        setUpDrinkListState()
     }
 
     private fun FragmentHomeBinding.setUpBannerState() {
         collectLatestFlow(viewModel.homeBannerUiState) { uiState ->
             val drink = uiState.data
 
+            appBarLayout.setExpanded(uiState.isTopBarExpanded)
             bannerProgressBar.isVisible = uiState.isLoading
             bannerInfoLinearLayout.isVisible = uiState.errorMessage.isBlank()
             bannerErrorTextView.isVisible = uiState.errorMessage.isNotBlank()
@@ -79,5 +84,10 @@ class HomeFragment : Fragment() {
                 show(fragmentManager, DetailsFragment::class.toString())
             }
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        viewModel.saveTopBarState(!binding.appBarLayout.isLifted)
     }
 }

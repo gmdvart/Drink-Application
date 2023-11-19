@@ -5,5 +5,6 @@ import com.example.punkapplication.domain.model.DrinkModel
 data class HomeBannerUiState(
     val isLoading: Boolean = false,
     val data: DrinkModel? = null,
-    val errorMessage: String = ""
+    val errorMessage: String = "",
+    val isTopBarExpanded: Boolean = true
 )
