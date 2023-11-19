@@ -56,6 +56,7 @@ dependencies {
     implementation(libs.bundles.pagigng)
     implementation(libs.coil)
 //    implementation(libs.bundles.hilt)
+    implementation(libs.bundles.navigation)
 
     testImplementation("junit:junit:4.13.2")
 

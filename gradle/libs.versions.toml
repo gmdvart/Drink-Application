@@ -13,6 +13,7 @@ logback = "1.2.8"
 paging = "3.2.1"
 coil = "2.4.0"
 hilt = "2.48"
+navigation = "2.7.5"
 
 [libraries]
 # Base
@@ -40,6 +41,9 @@ coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 # Hilt
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-kapt = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+# Navigation
+navigation-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
+navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
 
 [plugins]
 kotlin-android = { id = "org.jetbrains.kotlin.android", version = "1.9.0" }
@@ -54,3 +58,4 @@ androidx = ["androidx-appcompat", "androidx-constraintlayout", "androidx-lifecyc
 ktorclient = ["ktor-core", "ktor-android", "ktor-negotiation", "ktor-serialization", "ktor-logging", "logback-classic"]
 pagigng = ["paging-runtime", "room-paging"]
 hilt = ["hilt-android", "hilt-kapt"]
+navigation = ["navigation-fragment", "navigation-ui"]

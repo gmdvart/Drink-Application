@@ -20,6 +20,10 @@
     <string name="history_clear">Clear history</string>
     <string name="history_remove">Remove from history</string>
 
+    <string name="navigation_home">Home</string>
+    <string name="navigation_favorites">Favorites</string>
+    <string name="navigation_history">History</string>
+
     <string name="lorem_ipsum">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
         egestas. In elit libero, aliquet ut nibh sit amet, consequat tristique massa. Vestibulum rhoncus eget odio et
         pharetra. Pellentesque non facilisis dolor. Fusce blandit lacus dui, ac laoreet nisi lobortis nec. Pellentesque
