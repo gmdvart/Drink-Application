@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="margin">16dp</dimen>
+    <dimen name="padding">16dp</dimen>
     <dimen name="home_banner_height">192dp</dimen>
+
     <dimen name="item_list_text_height">36dp</dimen>
     <dimen name="item_list_image_height">144dp</dimen>
+    <dimen name="item_list_margin">15dp</dimen>
+    <dimen name="item_list_image_margin">8dp</dimen>
+    <dimen name="item_list_text_padding">4dp</dimen>
+
     <dimen name="shape_corner_radius">30dp</dimen>
+
     <dimen name="details_image_height">360dp</dimen>
     <dimen name="details_fab_margin">16dp</dimen>
+
     <dimen name="favorites_counter_inner_padding">16dp</dimen>
     <dimen name="favorites_counter_shape_size">84dp</dimen>
     <dimen name="favorites_counter_max_text_size">32dp</dimen>
+
     <dimen name="history_item_height">82dp</dimen>
 </resources>

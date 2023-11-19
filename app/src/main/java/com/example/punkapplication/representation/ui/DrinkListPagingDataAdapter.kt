@@ -20,7 +20,7 @@ class DrinkListPagingDataAdapter(
             with(binding) {
                 favoriteImageView.isVisible = false
                 imageView.load(drinkModel.imageUrl) { crossfade(true) }
-                textView.text = drinkModel.name
+                textView.text = drinkModel.name.uppercase()
             }
         }
     }

@@ -17,6 +17,7 @@ import com.example.punkapplication.representation.details.DetailsFragment
 import com.example.punkapplication.representation.details.DetailsViewModel
 import com.example.punkapplication.representation.ui.DrinkListPagingDataAdapter
 import com.example.punkapplication.representation.utils.collectLatestFlow
+import com.example.punkapplication.representation.utils.setUpRecyclerView
 
 class HomeFragment : Fragment() {
 
@@ -44,13 +45,12 @@ class HomeFragment : Fragment() {
     private fun FragmentHomeBinding.setUpBannerState() {
         collectLatestFlow(viewModel.homeBannerUiState) { uiState ->
             val drink = uiState.data
-            Log.d("Home",  "Is TopAppBar expanded: ${uiState.isTopBarExpanded}")
             appBarLayout.setExpanded(uiState.isTopBarExpanded)
             bannerProgressBar.isVisible = uiState.isLoading
             bannerInfoLinearLayout.isVisible = uiState.errorMessage.isBlank()
             bannerErrorTextView.isVisible = uiState.errorMessage.isNotBlank()
 
-            bannerTaglineTextView.text = drink?.tagline
+            bannerTaglineTextView.text = drink?.tagline?.uppercase()
             bannerImageView.load(drink?.imageUrl) { crossfade(true) }
             bannerErrorTextView.text = uiState.errorMessage
         }
@@ -58,8 +58,7 @@ class HomeFragment : Fragment() {
 
     private fun FragmentHomeBinding.setUpDrinkListState() {
         val pagingDataAdapter = DrinkListPagingDataAdapter { drinkId -> showDrinkDetails(drinkId) }
-        recyclerView.adapter = pagingDataAdapter
-        recyclerView.layoutManager = GridLayoutManager(context, 2)
+        setUpRecyclerView(requireContext(), pagingDataAdapter)
 
         collectLatestFlow(viewModel.drinkListPagingData) {
             pagingDataAdapter.submitData(it)
