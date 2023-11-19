@@ -8,6 +8,7 @@
         tools:context=".representation.favorites.FavoritesFragment">
 
     <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:liftOnScroll="true">

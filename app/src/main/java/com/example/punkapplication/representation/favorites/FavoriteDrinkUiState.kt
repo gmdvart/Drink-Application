@@ -6,6 +6,7 @@ sealed class FavoriteDrinkUiState {
     data object Loading: FavoriteDrinkUiState()
     data class Loaded(
         val drinks: List<DrinkModel> = listOf(),
-        val amountOfDrinks: Int = 0
+        val amountOfDrinks: Int = 0,
+        val isTopBarExpanded: Boolean = true
     ) : FavoriteDrinkUiState()
 }

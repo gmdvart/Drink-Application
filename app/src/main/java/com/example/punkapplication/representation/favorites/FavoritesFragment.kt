@@ -39,6 +39,8 @@ class FavoritesFragment : Fragment() {
             progressBar.isVisible = uiState is FavoriteDrinkUiState.Loading
 
             if (uiState is FavoriteDrinkUiState.Loaded) {
+                appBarLayout.setExpanded(uiState.isTopBarExpanded)
+
                 drinkAmountCardView.isVisible = uiState.amountOfDrinks != 0
                 counterTextView.text = uiState.amountOfDrinks.toString()
 
@@ -47,5 +49,11 @@ class FavoritesFragment : Fragment() {
                 adapter.submitList(uiState.drinks)
             }
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        val isTopBarExpanded = !binding.appBarLayout.isLifted
+        viewModel.saveTopBarState(isTopBarExpanded)
     }
 }
