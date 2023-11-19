@@ -1,6 +1,7 @@
 package com.example.punkapplication.representation.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,7 +44,7 @@ class HomeFragment : Fragment() {
     private fun FragmentHomeBinding.setUpBannerState() {
         collectLatestFlow(viewModel.homeBannerUiState) { uiState ->
             val drink = uiState.data
-
+            Log.d("Home",  "Is TopAppBar expanded: ${uiState.isTopBarExpanded}")
             appBarLayout.setExpanded(uiState.isTopBarExpanded)
             bannerProgressBar.isVisible = uiState.isLoading
             bannerInfoLinearLayout.isVisible = uiState.errorMessage.isBlank()
@@ -88,6 +89,7 @@ class HomeFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        viewModel.saveTopBarState(!binding.appBarLayout.isLifted)
+        val isTopAppBarExpanded = !binding.appBarLayout.isLifted
+        viewModel.saveTopBarState(isTopAppBarExpanded)
     }
 }
