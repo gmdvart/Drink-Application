@@ -36,7 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:indeterminate="true"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            app:indicatorColor="@color/brand"/>
 
     <TextView
             android:id="@+id/emptyHistoryTextView"
