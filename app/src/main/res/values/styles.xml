@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="TextAppearance.PunkApplication.Headline3" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">44sp</item>
+        <item name="android:fontFamily">@font/montserrat_extra_bold</item>
+    </style>
+
     <style name="TextAppearance.PunkApplication.Headline4" parent="TextAppearance.AppCompat">
         <item name="android:textSize">34sp</item>
         <item name="android:fontFamily">@font/montserrat_bold</item>
@@ -8,6 +13,11 @@
     <style name="TextAppearance.PunkApplication.Headline5" parent="TextAppearance.AppCompat">
         <item name="android:textSize">24sp</item>
         <item name="android:fontFamily">@font/poppins_extra_bold</item>
+    </style>
+
+    <style name="TextAppearance.PunkApplication.Favorites.Headline5" parent="TextAppearance.PunkApplication.Headline5">
+        <item name="android:fontFamily">@font/poppins_semi_bold</item>
+        <item name="android:textColor">@color/onBackground</item>
     </style>
 
     <style name="TextAppearance.PunkApplication.Headline6" parent="TextAppearance.AppCompat">

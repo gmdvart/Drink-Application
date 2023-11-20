@@ -9,4 +9,9 @@
             android:fontStyle="normal"
             android:fontWeight="700"
             android:font="@font/montserrat_bold"/>
+
+    <font
+            android:fontStyle="normal"
+            android:fontWeight="800"
+            android:font="@font/montserrat_extra_bold"/>
 </font-family>

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.punkapplication.databinding.FragmentFavoritesBinding
 import com.example.punkapplication.representation.ui.FavoritesAdapter
 import com.example.punkapplication.representation.utils.collectLatestFlow
+import com.example.punkapplication.representation.utils.setUpRecyclerView
 
 class FavoritesFragment : Fragment() {
 
@@ -32,8 +33,7 @@ class FavoritesFragment : Fragment() {
 
     private fun FragmentFavoritesBinding.setUpState() {
         val adapter = FavoritesAdapter { viewModel.removeDrinkFromFavorite(it) }
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+        setUpRecyclerView(requireContext(), adapter)
 
         collectLatestFlow(viewModel.drinkUiState) { uiState ->
             progressBar.isVisible = uiState is FavoriteDrinkUiState.Loading
