@@ -5,5 +5,13 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.PunkApplication" parent="Base.Theme.PunkApplication"/>
+    <style name="Theme.PunkApplication" parent="Base.Theme.PunkApplication">
+        <item name="backgroundColor">@color/light_background</item>
+        <item name="colorOnBackground">@color/light_onBackground</item>
+        <item name="colorSurface">@color/light_surface</item>
+        <item name="colorOnSurface">@color/light_onSurface</item>
+        <item name="colorPrimary">@color/light_primary</item>
+        <item name="android:statusBarColor">@color/light_surface</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
 </resources>

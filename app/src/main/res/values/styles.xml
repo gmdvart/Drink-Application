@@ -15,9 +15,9 @@
         <item name="android:fontFamily">@font/poppins_extra_bold</item>
     </style>
 
-    <style name="TextAppearance.PunkApplication.Favorites.Headline5" parent="TextAppearance.PunkApplication.Headline5">
+    <style name="TextAppearance.PunkApplication.Headline5.Empty" parent="TextAppearance.PunkApplication.Headline5">
         <item name="android:fontFamily">@font/poppins_semi_bold</item>
-        <item name="android:textColor">@color/onBackground</item>
+        <item name="android:textColor">@color/emptyList</item>
     </style>
 
     <style name="TextAppearance.PunkApplication.Headline6" parent="TextAppearance.AppCompat">

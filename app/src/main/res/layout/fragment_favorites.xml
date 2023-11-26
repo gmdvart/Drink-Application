@@ -5,6 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?attr/colorSurface"
         tools:context=".representation.favorites.FavoritesFragment">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -25,7 +26,8 @@
                     android:minHeight="?attr/actionBarSize"
                     app:title="@string/favorites_title"
                     android:padding="@dimen/padding"
-                    app:titleTextAppearance="@style/TextAppearance.PunkApplication.Headline4"/>
+                    app:titleTextAppearance="@style/TextAppearance.PunkApplication.Headline4"
+                    app:titleTextColor="?attr/colorOnSurface"/>
 
             <androidx.cardview.widget.CardView
                     android:id="@+id/drinkAmountCardView"
@@ -76,6 +78,7 @@
                                 android:autoSizeTextType="uniform"
                                 android:autoSizeMaxTextSize="@dimen/favorites_counter_max_text_size"
                                 style="@style/TextAppearance.PunkApplication.Headline3"
+                                android:textColor="?attr/colorOnBackground"
                                 tools:text="10"/>
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -99,7 +102,7 @@
             android:layout_height="wrap_content"
             android:text="@string/favorites_empty"
             android:visibility="gone"
-            style="@style/TextAppearance.PunkApplication.Favorites.Headline5"
+            style="@style/TextAppearance.PunkApplication.Headline5.Empty"
             android:layout_gravity="center"/>
 
     <com.google.android.material.progressindicator.CircularProgressIndicator

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
+<androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/history_item_height">
+        android:layout_height="@dimen/history_item_height"
+        android:backgroundTint="?attr/backgroundColor">
 
     <TextView
             android:id="@+id/drinkNameTextView"
@@ -13,5 +14,6 @@
             android:textAlignment="center"
             android:layout_gravity="center"
             style="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="?attr/colorOnBackground"
             tools:text="PUNK IPA 1997 - 1999"/>
-</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>

@@ -5,6 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="?attr/backgroundColor"
         app:cardCornerRadius="@dimen/shape_corner_radius">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,6 +43,7 @@
                 android:layout_marginHorizontal="@dimen/item_list_margin"
                 android:padding="@dimen/item_list_text_padding"
                 style="@style/TextAppearance.PunkApplication.Body2"
+                android:textColor="?attr/colorOnBackground"
                 tools:text="BUZZ\nBUZZ"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
