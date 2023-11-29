@@ -22,6 +22,8 @@
                 app:menu="@menu/history_menu"
                 app:layout_scrollFlags="scroll"
                 app:title="@string/history_title"
+                android:padding="@dimen/padding"
+                app:titleTextAppearance="@style/TextAppearance.PunkApplication.Headline4"
                 app:titleTextColor="?attr/colorOnSurface"/>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -47,5 +49,6 @@
             android:layout_height="wrap_content"
             android:text="@string/history_empty"
             android:visibility="gone"
+            style="@style/TextAppearance.PunkApplication.Headline5.Empty"
             android:layout_gravity="center"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

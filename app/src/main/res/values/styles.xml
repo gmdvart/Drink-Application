@@ -25,6 +25,11 @@
         <item name="android:fontFamily">@font/montserrat_semi_bold</item>
     </style>
 
+    <style name="TextAppearance.PunkApplication.Headline6.HistoryItem" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">22sp</item>
+        <item name="android:fontFamily">@font/poppins_semi_bold</item>
+    </style>
+
     <style name="TextAppearance.PunkApplication.Body2" parent="TextAppearance.AppCompat">
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
