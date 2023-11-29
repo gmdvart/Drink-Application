@@ -10,7 +10,20 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
+
+        <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_list_image_height"
+                android:contentDescription="@string/details_drink_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:paddingVertical="@dimen/padding"
+                android:background="@drawable/details_bottom_sheet_background"
+                android:backgroundTint="@color/light_background"
+                tools:src="@drawable/keg"/>
 
         <ImageView
                 android:id="@+id/favoriteImageView"
@@ -22,27 +35,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
-        <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/item_list_image_height"
-                android:contentDescription="@null"
-                android:layout_margin="@dimen/item_list_image_margin"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/keg"/>
-
         <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAlignment="center"
                 app:layout_constraintTop_toBottomOf="@id/imageView"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:gravity="center"
                 android:layout_marginHorizontal="@dimen/item_list_margin"
-                android:padding="@dimen/item_list_text_padding"
-                style="@style/TextAppearance.PunkApplication.Body2"
+                android:paddingVertical="@dimen/item_list_text_padding"
+                style="@style/PunkApplication.Body1"
                 android:textColor="?attr/colorOnBackground"
                 tools:text="BUZZ\nBUZZ"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

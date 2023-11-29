@@ -26,7 +26,7 @@
                     android:minHeight="?attr/actionBarSize"
                     app:title="@string/home_title"
                     android:padding="@dimen/padding"
-                    app:titleTextAppearance="@style/TextAppearance.PunkApplication.Headline4"
+                    app:titleTextAppearance="@style/PunkApplication.Headline4"
                     app:titleTextColor="?attr/colorOnSurface"/>
 
             <androidx.cardview.widget.CardView
@@ -72,7 +72,7 @@
                             android:layout_weight="3"
                             android:gravity="center"
                             android:padding="@dimen/padding"
-                            style="@style/TextAppearance.PunkApplication.Headline5"
+                            style="@style/PunkApplication.Headline5"
                             android:textColor="@color/brand"
                             tools:text="A Real Bitter Experience."/>
                 </LinearLayout>
@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/home_flavors"
                 android:layout_margin="@dimen/margin"
-                style="@style/TextAppearance.PunkApplication.Headline6"
+                style="@style/PunkApplication.Headline6"
                 android:textColor="?attr/colorOnSurface"/>
 
         <androidx.recyclerview.widget.RecyclerView

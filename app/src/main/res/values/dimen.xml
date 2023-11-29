@@ -6,10 +6,10 @@
     <dimen name="home_banner_height">192dp</dimen>
 
     <dimen name="item_list_text_height">36dp</dimen>
-    <dimen name="item_list_image_height">144dp</dimen>
-    <dimen name="item_list_margin">15dp</dimen>
+    <dimen name="item_list_image_height">200dp</dimen>
+    <dimen name="item_list_margin">16dp</dimen>
     <dimen name="item_list_image_margin">8dp</dimen>
-    <dimen name="item_list_text_padding">4dp</dimen>
+    <dimen name="item_list_text_padding">8dp</dimen>
 
     <dimen name="shape_corner_radius">30dp</dimen>
     <dimen name="shape_corner_radius_small">15dp</dimen>

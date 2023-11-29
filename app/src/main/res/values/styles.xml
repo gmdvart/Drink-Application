@@ -1,37 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="TextAppearance.PunkApplication.Headline3" parent="TextAppearance.AppCompat">
+    <style name="PunkApplication.Headline3" parent="TextAppearance.AppCompat">
         <item name="android:textSize">44sp</item>
         <item name="android:fontFamily">@font/montserrat_extra_bold</item>
     </style>
 
-    <style name="TextAppearance.PunkApplication.Headline4" parent="TextAppearance.AppCompat">
+    <style name="PunkApplication.Headline4" parent="TextAppearance.AppCompat">
         <item name="android:textSize">34sp</item>
         <item name="android:fontFamily">@font/montserrat_bold</item>
     </style>
 
-    <style name="TextAppearance.PunkApplication.Headline5" parent="TextAppearance.AppCompat">
+    <style name="PunkApplication.Headline5" parent="TextAppearance.AppCompat">
         <item name="android:textSize">24sp</item>
         <item name="android:fontFamily">@font/poppins_extra_bold</item>
     </style>
 
-    <style name="TextAppearance.PunkApplication.Headline5.Empty" parent="TextAppearance.PunkApplication.Headline5">
+    <style name="PunkApplication.Headline5.Empty">
         <item name="android:fontFamily">@font/poppins_semi_bold</item>
         <item name="android:textColor">@color/emptyList</item>
     </style>
 
-    <style name="TextAppearance.PunkApplication.Headline6" parent="TextAppearance.AppCompat">
+    <style name="PunkApplication.Headline5.DetailsTagline" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">25sp</item>
+        <item name="android:fontFamily">@font/montserrat_black</item>
+        <item name="android:textColor">?attr/backgroundColor</item>
+    </style>
+
+    <style name="PunkApplication.Headline5.DetailsName" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">30sp</item>
+        <item name="android:fontFamily">@font/poppins_black</item>
+        <item name="android:textColor">@color/secondary</item>
+    </style>
+
+    <style name="PunkApplication.Headline6" parent="TextAppearance.AppCompat">
         <item name="android:textSize">22sp</item>
         <item name="android:fontFamily">@font/montserrat_semi_bold</item>
     </style>
 
-    <style name="TextAppearance.PunkApplication.Headline6.HistoryItem" parent="TextAppearance.AppCompat">
+    <style name="PunkApplication.Headline6.Details">
+        <item name="android:fontFamily">@font/poppins_semi_bold</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
+    </style>
+
+    <style name="PunkApplication.Headline6.HistoryItem" parent="TextAppearance.AppCompat">
         <item name="android:textSize">22sp</item>
         <item name="android:fontFamily">@font/poppins_semi_bold</item>
     </style>
 
-    <style name="TextAppearance.PunkApplication.Body2" parent="TextAppearance.AppCompat">
+    <style name="PunkApplication.Body1.Details" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
+    </style>
+
+    <style name="PunkApplication.Body1" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="PunkApplication.Body2" parent="TextAppearance.AppCompat">
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+    
+    <style name="PunkApplication.Caption" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/emptyList</item>
     </style>
 </resources>

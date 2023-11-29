@@ -12,5 +12,6 @@
             android:layout_gravity="right"
             android:contentDescription="@string/details_add_to_favorite"
             android:src="@drawable/favorite_not_added"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
             android:layout_margin="@dimen/details_fab_margin"/>
 </FrameLayout>
